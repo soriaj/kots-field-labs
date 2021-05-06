@@ -27,7 +27,7 @@ ${REPLICATED_APP}-lab1-e6-proxy
 ```
 
 An HTTP proxy has been provisioned to be shared by all lab participants. 
-It will have a dynamic private IP but for simplicity we'll can use the DNS entry 
+It will have a dynamic private IP but for simplicity we will use the DNS entry 
 
 ```
 kots-field-labs-squid-proxy
@@ -145,8 +145,18 @@ When the kURL script detects a proxy configuration in the environment, it will d
 - ensure the container runtime (docker or containerd) is configured to pull images via the proxy
 - ensure the KOTS admin console is configure to pull app updates and license metadata through the proxy
 
-Once the install skip completes, you can validate this by reviewing the environment variables on 
-the `kotsadm` deployment.
+Once the install script completes, you can validate that it correctly detected the proxy settings by reviewing the `ENV` variables on the `kotsadm` deployment.
+
+<details>
+  <summary>Answer</summary>
+
+  To view the `ENV` variable values on the `kotsadm` deployment:
+
+  `kubectl describe deployment kotsadm -n default`
+
+  NOTE: you may have to `bash -l` first
+
+</details>
 
 ### Configuring the instance
 
